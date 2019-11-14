@@ -81,11 +81,24 @@ SPACESHIP_CHAR_SUFFIX=" "
 
 Configurando o ZPlugin
 
+#### Automático
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 ```
 
-Após essa instalação abrir o arquivo `~/.zshrc`, e abaixo da linha `### End of Zplugin's installer chunk` adicionar:
+#### Manual
+```bash
+mkdir ~/.zplugin
+git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+```
+> Adicionar no arquivo `~/.zshrc`:
+>```js
+>source ~/.zplugin/bin/zplugin.zsh
+>autoload -Uz _zplugin
+>(( ${+_comps} )) && _comps[zplugin]=_zplugin
+>```
+
+Após essa instalação abrir o arquivo `~/.zshrc`, e abaixo da instalação do ZPlugin adicionar:
 
 ```js
 zplugin light zdharma/fast-syntax-highlighting
